@@ -18,3 +18,4 @@ def test_multiplicar():
 
     assert response.status_code == 200
     assert response.json() == {"resultado": 5}
+#KT
