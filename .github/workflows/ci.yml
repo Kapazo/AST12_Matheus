@@ -1,4 +1,4 @@
-#KT
+
 name: Teste de API
 
 on:
@@ -29,3 +29,16 @@ jobs:
 
       - name: Rodar Testes
         run: pytest test_main.py
+
+      - name: Subir a API e testar requisição (Integração)
+        run: |
+          # Inicia a API em segundo plano
+          fastapi run main.py --port 8000 &
+
+          # Aguarda o servidor iniciar
+          sleep 3
+
+          # Testa as rotas
+          curl -f http://localhost:8000/
+          curl -f http://localhost:8000/somar/10/20
+#KT
